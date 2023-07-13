@@ -1,10 +1,10 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 const AddSalary = ({ upSalary }) => {
     const [salary, setSalary] = useState(0);
-    const Salarys = () => {
+    useEffect(() => {
         upSalary(salary);
-    };
+    }, [salary]);
     return (
         <div>
             <label>월급</label>
@@ -13,7 +13,6 @@ const AddSalary = ({ upSalary }) => {
                 min={0}
                 onChange={(e) => {
                     setSalary(e.target.value);
-                    Salarys();
                 }}
             />
             <div>

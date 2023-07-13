@@ -7,7 +7,7 @@ const SetPlan = ({ salary }) => {
     const Submit = (e) => {
         e.preventDefault();
         let name = e.target.name.value;
-        let account = (salary * e.target.parsent.value) / 10;
+        let account = salary * (e.target.parsent.value / 100);
         let addPlan = {
             name: name,
             num: account,

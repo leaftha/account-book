@@ -14,7 +14,7 @@ const DetailPlan = ({ salary, name, num }) => {
     return (
         <div>
             <h1>{name}</h1>
-            <h2>{(num * salary) / 10}%</h2>
+            <h2>{(num / salary) * 100}%</h2>
             <span>값 - {num}</span>
             <span>계산 값 - {detailNum}</span>
             <form onSubmit={submit}>

@@ -7,7 +7,7 @@ function App() {
     const [addSalary, setAddSalary] = useState(0);
     return (
         <div className={classes.App}>
-            <h1 className={classes.title}>가계부</h1>
+            <h1 className={classes.title}>한달 가계부</h1>
             <AddSalary upSalary={setAddSalary} />
             <SetPlan salary={addSalary} />
         </div>

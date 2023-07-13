@@ -10,6 +10,7 @@ const AddSalary = ({ upSalary }) => {
             <label>월급</label>
             <input
                 type="number"
+                min={0}
                 onChange={(e) => {
                     setSalary(e.target.value);
                     Salarys();

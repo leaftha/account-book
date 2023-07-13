@@ -1,4 +1,6 @@
 import { useState } from 'react';
+import uniqid from 'uniqid';
+
 import claases from './detailPlan.module.css';
 
 const DetailPlan = ({ salary, name, num }) => {
@@ -9,8 +11,18 @@ const DetailPlan = ({ salary, name, num }) => {
         e.preventDefault();
         let name = e.target.name.value;
         let account = e.target.num.value;
-        setDetailPlan([...detailPlan, { name: name, num: account }]);
+        setDetailPlan([...detailPlan, { id: uniqid(), name: name, num: account }]);
         setDetailNum(detailNum - account);
+    };
+
+    const removePlan = (id) => {
+        setDetailPlan((prev) => {
+            const updataNum = prev.filter((text) => text.id == id);
+            const num = updataNum[0].num * 1;
+            const updataData = prev.filter((text) => text.id !== id);
+            setDetailNum(detailNum + num);
+            return updataData;
+        });
     };
     return (
         <div className={claases.main}>
@@ -27,7 +39,20 @@ const DetailPlan = ({ salary, name, num }) => {
             </form>
             <ul className={claases.detailUi}>
                 {detailPlan.map((plan, idx) => {
-                    return <li className={claases.detailLi} key={idx}>{`${plan.name} - ${plan.num}`}</li>;
+                    return (
+                        <div className={claases.detailDiv} key={idx}>
+                            <li className={claases.detailLi}>{`${plan.name} - ${plan.num}`}</li>
+                            <button
+                                onClick={() => {
+                                    let id = plan.id;
+                                    removePlan(id);
+                                }}
+                                className={claases.detailBtn}
+                            >
+                                X
+                            </button>
+                        </div>
+                    );
                 })}
             </ul>
         </div>

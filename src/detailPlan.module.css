@@ -50,6 +50,13 @@
     align-items: center;
 }
 
+.detailDiv {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
 .detailLi {
     display: flex;
     align-items: center;
@@ -61,4 +68,11 @@
     margin: 10px 0;
     border-radius: 10px;
     background-color: white;
+}
+
+.detailBtn {
+    height: 100%;
+    font-size: 20px;
+    background: none;
+    border: none;
 }

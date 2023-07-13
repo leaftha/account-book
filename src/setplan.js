@@ -9,7 +9,6 @@ const SetPlan = ({ salary }) => {
         e.preventDefault();
         let name = e.target.name.value;
         let account = salary * (e.target.parsent.value / 100);
-        console.log(account);
         let addPlan = {
             name: name,
             num: account,

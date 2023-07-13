@@ -1,0 +1,54 @@
+.main {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+.planform {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100px;
+    margin: 10px 0;
+    border: 1px solid black;
+    background-color: #dfd7bf;
+}
+
+.planInputs {
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+    font-size: 20px;
+    text-align: center;
+}
+
+.planLabel {
+    margin: 10px 0;
+    font-weight: bold;
+}
+
+.input {
+    height: 100%;
+    font-size: 20px;
+}
+
+.planBtn {
+    height: 100%;
+}
+
+.btn {
+    font-size: 20px;
+    height: 100%;
+    background: #f2ead3;
+    border: none;
+}
+
+.palnlist {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+}

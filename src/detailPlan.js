@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import claases from './detailPlan.module.css';
 
 const DetailPlan = ({ salary, name, num }) => {
     const [detailNum, setDetailNum] = useState(num);
@@ -12,19 +13,21 @@ const DetailPlan = ({ salary, name, num }) => {
         setDetailNum(detailNum - account);
     };
     return (
-        <div>
-            <h1>{name}</h1>
-            <h2>{(num / salary) * 100}%</h2>
-            <span>값 - {num}</span>
-            <span>계산 값 - {detailNum}</span>
-            <form onSubmit={submit}>
-                <input name="name" type="text" />
-                <input name="num" type="number" />
-                <button>추가</button>
+        <div className={claases.main}>
+            <h1 className={claases.title}>{name}</h1>
+            <h2 className={claases.parsent}>{(num / salary) * 100}%</h2>
+            <span className={claases.span}>총값 : {num}</span>
+            <span className={claases.span}>계산 값 : {detailNum}</span>
+            <form className={claases.detailform} onSubmit={submit}>
+                <div className={claases.detailinput}>
+                    <input className={claases.input} name="name" type="text" placeholder="제목" />
+                    <input className={claases.input} name="num" type="number" min={0} placeholder="가격" />
+                </div>
+                <button className={claases.btn}>추가</button>
             </form>
-            <ul>
+            <ul className={claases.detailUi}>
                 {detailPlan.map((plan, idx) => {
-                    return <li key={idx}>{`${plan.name} - ${plan.num}`}</li>;
+                    return <li className={claases.detailLi} key={idx}>{`${plan.name} - ${plan.num}`}</li>;
                 })}
             </ul>
         </div>

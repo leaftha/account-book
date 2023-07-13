@@ -1,13 +1,13 @@
 import { useState } from 'react';
 import AddSalary from './Addsalary';
-import './App.css';
+import classes from './App.module.css';
 import SetPlan from './setplan';
 
 function App() {
     const [addSalary, setAddSalary] = useState(0);
     return (
-        <div className="App">
-            <h1>가계부</h1>
+        <div className={classes.App}>
+            <h1 className={classes.title}>가계부</h1>
             <AddSalary upSalary={setAddSalary} />
             <SetPlan salary={addSalary} />
         </div>

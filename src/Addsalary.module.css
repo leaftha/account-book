@@ -1,0 +1,27 @@
+.main {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.title {
+    font-size: 25px;
+    margin: 20px 0;
+}
+
+.salaryinput {
+    margin: 0 auto;
+    height: 20px;
+    width: 200px;
+}
+
+.content {
+    font-size: 20px;
+    margin: 10px 0;
+}
+
+.salary {
+    font-weight: bold;
+}

@@ -3,7 +3,7 @@ import uniqid from 'uniqid';
 
 import claases from './detailPlan.module.css';
 
-const DetailPlan = ({ salary, name, num }) => {
+const DetailPlan = ({ salary, name, num, id, remove }) => {
     const [detailNum, setDetailNum] = useState(num);
     const [detailPlan, setDetailPlan] = useState([]);
 
@@ -26,6 +26,14 @@ const DetailPlan = ({ salary, name, num }) => {
     };
     return (
         <div className={claases.main}>
+            <button
+                className={claases.remove}
+                onClick={() => {
+                    remove(id);
+                }}
+            >
+                X
+            </button>
             <h1 className={claases.title}>{name}</h1>
             <h2 className={claases.parsent}>{(num / salary) * 100}%</h2>
             <span className={claases.span}>총값 : {num}</span>

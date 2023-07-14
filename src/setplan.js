@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import DetailPlan from './detailPlan';
 import classes from './setplan.module.css';
+import uniqid from 'uniqid';
 
 const SetPlan = ({ salary }) => {
     const [plans, setPlans] = useState([]);
@@ -10,10 +11,19 @@ const SetPlan = ({ salary }) => {
         let name = e.target.name.value;
         let account = salary * (e.target.parsent.value / 100);
         let addPlan = {
+            id: uniqid(),
             name: name,
             num: account,
         };
         setPlans([...plans, addPlan]);
+    };
+
+    const remove = (id) => {
+        console.log(id);
+        setPlans((prev) => {
+            const updataData = prev.filter((text) => text.id !== id);
+            return updataData;
+        });
     };
 
     return (
@@ -33,7 +43,16 @@ const SetPlan = ({ salary }) => {
             </form>
             <div className={classes.palnlist}>
                 {plans.map((plan, idx) => {
-                    return <DetailPlan key={idx} salary={salary} name={plan.name} num={plan.num} />;
+                    return (
+                        <DetailPlan
+                            key={idx}
+                            id={plan.id}
+                            remove={remove}
+                            salary={salary}
+                            name={plan.name}
+                            num={plan.num}
+                        />
+                    );
                 })}
             </div>
         </div>

@@ -6,18 +6,20 @@ import claases from './detailPlan.module.css';
 const DetailPlan = ({ salary, name, num, id, remove }) => {
     const [detailNum, setDetailNum] = useState(num);
     const [detailPlan, setDetailPlan] = useState([]);
+    const [title, setTitle] = useState('');
+    const [account, setAccount] = useState(0);
 
     const submit = (e) => {
         e.preventDefault();
-        let name = e.target.name.value;
-        let account = e.target.num.value;
-        setDetailPlan([...detailPlan, { id: uniqid(), name: name, num: account }]);
+        setDetailPlan([...detailPlan, { id: uniqid(), name: title, num: account }]);
         setDetailNum(detailNum - account);
+        setAccount(0);
+        setTitle('');
     };
 
     const removePlan = (id) => {
         setDetailPlan((prev) => {
-            const updataNum = prev.filter((text) => text.id == id);
+            const updataNum = prev.filter((text) => text.id === id);
             const num = updataNum[0].num * 1;
             const updataData = prev.filter((text) => text.id !== id);
             setDetailNum(detailNum + num);
@@ -40,8 +42,27 @@ const DetailPlan = ({ salary, name, num, id, remove }) => {
             <span className={claases.span}>계산 값 : {detailNum}</span>
             <form className={claases.detailform} onSubmit={submit}>
                 <div className={claases.detailinput}>
-                    <input className={claases.input} name="name" type="text" placeholder="제목" />
-                    <input className={claases.input} name="num" type="number" min={0} placeholder="가격" />
+                    <input
+                        className={claases.input}
+                        onChange={(e) => {
+                            setTitle(e.target.value);
+                        }}
+                        value={title}
+                        name="name"
+                        type="text"
+                        placeholder="제목"
+                    />
+                    <input
+                        className={claases.input}
+                        onChange={(e) => {
+                            setAccount(e.target.value);
+                        }}
+                        value={account}
+                        name="num"
+                        type="number"
+                        min={0}
+                        placeholder="가격"
+                    />
                 </div>
                 <button className={claases.btn}>추가</button>
             </form>

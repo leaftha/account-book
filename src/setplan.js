@@ -5,21 +5,23 @@ import uniqid from 'uniqid';
 
 const SetPlan = ({ salary }) => {
     const [plans, setPlans] = useState([]);
+    const [title, setTitle] = useState('');
+    const [persent, setPersent] = useState(0);
 
     const Submit = (e) => {
         e.preventDefault();
-        let name = e.target.name.value;
-        let account = salary * (e.target.parsent.value / 100);
+        let account = salary * (persent / 100);
         let addPlan = {
             id: uniqid(),
-            name: name,
+            name: title,
             num: account,
         };
         setPlans([...plans, addPlan]);
+        setTitle('');
+        setPersent(0);
     };
 
     const remove = (id) => {
-        console.log(id);
         setPlans((prev) => {
             const updataData = prev.filter((text) => text.id !== id);
             return updataData;
@@ -31,11 +33,29 @@ const SetPlan = ({ salary }) => {
             <form className={classes.planform} onSubmit={Submit}>
                 <div className={classes.planInputs}>
                     <label className={classes.planLabel}>제목</label>
-                    <input className={classes.input} name="name" type="text" />
+                    <input
+                        className={classes.input}
+                        onChange={(e) => {
+                            setTitle(e.target.value);
+                        }}
+                        value={title}
+                        name="name"
+                        type="text"
+                    />
                 </div>
                 <div className={classes.planInputs}>
                     <label className={classes.planLabel}>비율(%)</label>
-                    <input className={classes.input} name="parsent" type="number" min={0} max={100} />
+                    <input
+                        className={classes.input}
+                        onChange={(e) => {
+                            setPersent(e.target.value);
+                        }}
+                        value={persent}
+                        name="parsent"
+                        type="number"
+                        min={0}
+                        max={100}
+                    />
                 </div>
                 <div className={classes.planBtn}>
                     <button className={classes.btn}>추가</button>

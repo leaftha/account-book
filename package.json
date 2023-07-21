@@ -35,5 +35,6 @@
   },
   "devDependencies": {
     "web-vitals": "^3.4.0"
-  }
+  },
+  "homepage": "https://leaftha.github.io/account-book-page/"
 }
